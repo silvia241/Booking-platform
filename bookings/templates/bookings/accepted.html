@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3>✅ Accepted Services</h3>
+
+{% for service, bookings in grouped_bookings.items %}
+
+    <div class="card mb-4 shadow">
+        <div class="card-header bg-success text-white d-flex justify-content-between">
+            <span>{{ service.title }}</span>
+            <span class="badge bg-light text-dark">
+                {{ bookings|length }} Accepted
+            </span>
+        </div>
+
+        <div class="card-body">
+
+            {% for booking in bookings %}
+                <div class="border p-3 mb-2">
+
+                    <p><strong>User:</strong> {{ booking.user.username }}</p>
+                    <p><strong>Date:</strong> {{ booking.date }} | {{ booking.time }}</p>
+
+                    <p class="text-success">
+                        <strong>Status:</strong> Accepted
+                    </p>
+
+                    <!-- COMPLETE BUTTON -->
+                    <a href="/booking/complete/{{ booking.id }}/"
+                       onclick="return confirm('Mark as completed?')"
+                       class="btn btn-primary btn-sm">
+                       ✔️ Complete
+                    </a>
+
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% empty %}
+    <p>No accepted bookings</p>
+{% endfor %}
+
+{% endblock %}

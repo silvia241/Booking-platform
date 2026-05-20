@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3>✅ My Accepted Bookings</h3>
+
+{% for booking in bookings %}
+    <div class="card mb-3">
+        <div class="card-body">
+
+            <h5>{{ booking.service.title }}</h5>
+            <p>{{ booking.service.description|truncatewords:10 }}</p>
+
+            <p><strong>Date:</strong> {{ booking.date }} | {{ booking.time }}</p>
+
+            <p class="text-success"><strong>Status:</strong> Accepted</p>
+
+        </div>
+    </div>
+{% empty %}
+    <p>No accepted bookings</p>
+{% endfor %}
+
+{% endblock %}

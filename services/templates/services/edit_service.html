@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+<div class="col-md-6">
+
+<div class="card shadow p-4">
+
+<h3>Edit Service</h3>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <input type="text" name="title" value="{{ service.title }}" class="form-control mb-3">
+
+    <textarea name="description" class="form-control mb-3">{{ service.description }}</textarea>
+
+    <input type="number" name="price" value="{{ service.price }}" class="form-control mb-3">
+
+    <button class="btn btn-warning w-100">Update</button>
+</form>
+
+</div>
+
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3>📥 Booking Requests</h3>
+
+{% for service, bookings in grouped_bookings.items %}
+
+    <div class="card mb-4 shadow">
+        <div class="card-header bg-dark text-white d-flex justify-content-between">
+            <span>{{ service.title }}</span>
+            <span class="badge bg-light text-dark">
+                {{ bookings|length }} Requests
+            </span>
+        </div>
+
+        <div class="card-body">
+
+            {% for booking in bookings %}
+                <div class="border p-3 mb-2">
+
+                    <p><strong>User:</strong> {{ booking.user.username }}</p>
+                    <p><strong>Date:</strong> {{ booking.date }} | {{ booking.time }}</p>
+
+                    <a href="/booking/accept/{{ booking.id }}/" class="btn btn-success btn-sm">
+                        Accept
+                    </a>
+
+                    <a href="/booking/reject/{{ booking.id }}/" class="btn btn-danger btn-sm">
+                        Reject
+                    </a>
+
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% empty %}
+    <p>No pending bookings</p>
+{% endfor %}
+
+{% endblock %}

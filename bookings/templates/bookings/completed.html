@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3>✔️ Completed Services</h3>
+
+{% for service, bookings in grouped_bookings.items %}
+
+    <div class="card mb-4 shadow">
+        <div class="card-header bg-success text-white d-flex justify-content-between">
+            <span>{{ service.title }}</span>
+            <span class="badge bg-light text-dark">
+                {{ bookings|length }} Completed
+            </span>
+        </div>
+
+        <div class="card-body">
+
+            {% for booking in bookings %}
+                <div class="border p-3 mb-2">
+
+                    <p><strong>User:</strong> {{ booking.user.username }}</p>
+                    <p><strong>Date:</strong> {{ booking.date }} | {{ booking.time }}</p>
+                    <p class="text-success"><strong>Status:</strong> Completed</p>
+
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% empty %}
+    <p>No completed services yet</p>
+{% endfor %}
+
+{% endblock %}

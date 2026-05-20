@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="dashboard-wrapper">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+        <div class="sidebar-logo">
+            Seller Panel
+        </div>
+
+        <a href="/services/add/">➕ Add Service</a>
+
+        <a href="/services/my-services/">
+            📦 My Services
+        </a>
+
+        <a href="/booking/pending/">
+            📥 Booking Requests
+        </a>
+
+        <a href="/booking/accepted/">
+            ✅ Accepted
+        </a>
+
+        <a href="/booking/rejected/">
+            ❌ Rejected
+        </a>
+
+        <a href="/booking/completed/">
+            ✔️ Completed
+        </a>
+
+    </div>
+
+    <!-- CONTENT -->
+    <div class="dashboard-content">
+
+        <h2>Hi, {{ request.user.username }} 👋</h2>
+
+        <div class="card shadow-sm p-4 mt-4" style="background: #e8e8e8">
+
+            <h4>Welcome Back</h4>
+
+            <p>
+                Manage your services and bookings from the sidebar.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

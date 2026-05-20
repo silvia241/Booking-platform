@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>My Services</h2>
+
+<div class="row">
+
+{% for service in services %}
+    <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+
+            <div class="card-body">
+                <h5>{{ service.title }}</h5>
+                <p>{{ service.description|truncatewords:10 }}</p>
+                <p><strong>${{ service.price }}</strong></p>
+
+                <a href="{% url 'edit_service' service.id %}" class="btn btn-warning btn-sm">Edit</a>
+
+                <a href="{% url 'delete_service' service.id %}" class="btn btn-danger btn-sm">Delete</a>
+            </div>
+
+        </div>
+    </div>
+{% endfor %}
+
+</div>
+
+{% if not services %}
+    <p>No services added yet</p>
+{% endif %}
+
+{% endblock %}

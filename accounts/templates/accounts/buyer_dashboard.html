@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="dashboard-wrapper">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+        <div class="sidebar-logo">
+            Buyer Panel
+        </div>
+
+        <a href="/booking/my-pending/">
+            📥 Pending
+        </a>
+
+        <a href="/booking/my-accepted/">
+            ✅ Accepted
+        </a>
+
+        <a href="/booking/my-rejected/">
+            ❌ Rejected
+        </a>
+
+        <a href="/booking/my-completed/">
+            ✔️ Completed
+        </a>
+
+        <a href="/services/">
+            🔍 Browse Services
+        </a>
+
+    </div>
+
+    <!-- CONTENT -->
+    <div class="dashboard-content">
+
+        <h2>Hi, {{ request.user.username }} 👋</h2>
+
+        <div class="card shadow-sm p-4 mt-4" style="background: #e8e8e8">
+
+            <h4>Welcome Back</h4>
+
+            <p>
+                Track your bookings from the sidebar.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
